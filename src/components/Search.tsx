@@ -1,7 +1,7 @@
 function Search() {
   return (
-    <div className="flex justify-center items-center w-full h-2/5">
-      <div className="w-full text-center h-1/3">
+    <div className="flex justify-center items-center w-full h-1/7">
+      <div className="w-full text-center">
         <input
           type="text"
           placeholder="Şəhər adı girin"
