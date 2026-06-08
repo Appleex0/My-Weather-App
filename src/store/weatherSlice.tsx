@@ -5,14 +5,14 @@ export interface cityState {
   city: string;
   weatherData: string;
   isLoading: boolean;
-  IsError: boolean;
+  isError: boolean;
 }
 
 const initialState: cityState = {
   city: "Baku",
   weatherData: "",
   isLoading: true,
-  IsError: false,
+  isError: false,
 };
 
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -39,6 +39,9 @@ export const weatherSlice = createSlice({
     sendCity: (state, action) => {
       state.city = action.payload;
     },
+    clearError: (state) => {
+      state.isError = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -46,21 +49,21 @@ export const weatherSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchWeather.fulfilled, (state, action) => {
-        if (action.payload.cod === "404") {
-          state.weatherData = "";
-        } else {
-          state.weatherData = action.payload;
+        if (!action.payload || action.payload.cod === "404") {
+          state.isError = true;
+          state.isLoading = false;
+          return;
         }
-
+        state.weatherData = action.payload;
         state.isLoading = false;
       })
       .addCase(fetchWeather.rejected, (state) => {
         state.isLoading = false;
-        state.IsError = true;
+        state.isError = true;
       });
   },
 });
 
-export const { sendCity } = weatherSlice.actions;
+export const { sendCity, clearError } = weatherSlice.actions;
 
 export default weatherSlice.reducer;
