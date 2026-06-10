@@ -9,7 +9,7 @@ function IsWrong() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen absolute top-0 left-0 w-full backdrop-blur-sm z-50">
-      <div className="text-2xl font-bold text-red-500">Wrong city name!</div>
+      <div className="text-2xl font-bold text-red-500">City not found!</div>
       <button
         onClick={() => {
           close();
