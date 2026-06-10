@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface cityState {
   city: string;
+  beforeCity: string;
   weatherData: string;
   isLoading: boolean;
   isError: boolean;
@@ -10,6 +11,7 @@ export interface cityState {
 
 const initialState: cityState = {
   city: "Baku",
+  beforeCity: "Baku",
   weatherData: "",
   isLoading: true,
   isError: false,
@@ -37,6 +39,7 @@ export const weatherSlice = createSlice({
   initialState,
   reducers: {
     sendCity: (state, action) => {
+      state.beforeCity = state.city;
       state.city = action.payload;
     },
     clearError: (state) => {
@@ -51,7 +54,7 @@ export const weatherSlice = createSlice({
       .addCase(fetchWeather.fulfilled, (state, action) => {
         if (!action.payload || action.payload.cod === "404") {
           state.isError = true;
-          state.isLoading = false;
+          state.isLoading = true;
           return;
         }
         state.weatherData = action.payload;

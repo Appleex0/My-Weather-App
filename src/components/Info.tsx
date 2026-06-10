@@ -13,6 +13,7 @@ function Info() {
   const city = useSelector((state: any) => state.weather.city);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchData = async () => {
       dispatch(fetchWeather(city));
@@ -37,7 +38,6 @@ function Info() {
     setIcon(data.weather[0].icon);
   }, [data]);
 
-  console.log(data);
   return (
     <div className="flex h-5/7 w-full">
       <div className="flex items-center justify-between w-full bg-amber-200 px-10">
@@ -49,10 +49,24 @@ function Info() {
           />
           <div className="flex flex-col gap-4">
             <div className="flex gap-4">
-              <div className="text-4xl">{city}</div>
-              <div className="text-4xl">{temperature} C</div>
+              <div className="text-4xl">
+                {isLoading ? <CircularProgress aria-label="Loading…" /> : city}
+              </div>
+              <div className="text-4xl">
+                {isLoading ? (
+                  <CircularProgress aria-label="Loading…" />
+                ) : (
+                  temperature
+                )}
+              </div>
             </div>
-            <div className="text-2xl">{description}</div>
+            <div className="text-2xl">
+              {isLoading ? (
+                <CircularProgress aria-label="Loading…" />
+              ) : (
+                description
+              )}
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-3 grid-rows-2 gap-10 w-3/5 h-1/2 text-center items-center">
