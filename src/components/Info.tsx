@@ -39,15 +39,15 @@ function Info() {
   }, [data]);
 
   return (
-    <div className="flex h-5/7 w-full">
-      <div className="flex items-center justify-between w-full bg-amber-200 px-10">
-        <div className="flex h-1/2 gap-4 justify-center items-center w-1/2">
+    <div className="flex w-full justify-center items-center bg-amber-200">
+      <div className="flex flex-col items-center justify-center w-full h-full  bg-amber-200 ">
+        <div className="flex gap-4 justify-center items-center w-full h-1/2">
           <img
-            className="w-1/3 h-1/2 object-cover"
+            className="w-1/3 "
             src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
             alt=""
           />
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col items-center justify-center pr-20">
             <div className="flex gap-4">
               <div className="text-4xl">
                 {isLoading ? <CircularProgress aria-label="Loading…" /> : city}
@@ -69,8 +69,8 @@ function Info() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-3 grid-rows-2 gap-10 w-3/5 h-1/2 text-center items-center">
-          <div className="bg-amber-50 text-2xl">
+        <div className="grid grid-cols-2 w-full h-full grid-rows-3 gap-5 text-center items-center px-5">
+          <div className="bg-amber-50 text-xl">
             <div className="">Feels Like</div>
             <div>
               {isLoading ? (
@@ -80,7 +80,7 @@ function Info() {
               )}
             </div>
           </div>
-          <div className="bg-amber-50 text-2xl">
+          <div className="bg-amber-50 text-xl">
             <div>Humidity</div>
             <div>
               {isLoading ? (
@@ -90,7 +90,7 @@ function Info() {
               )}
             </div>
           </div>
-          <div className="bg-amber-50 text-2xl">
+          <div className="bg-amber-50 text-xl">
             <div className="text-now">Wind Speed</div>
             <div>
               {isLoading ? (
@@ -100,7 +100,7 @@ function Info() {
               )}
             </div>
           </div>
-          <div className="bg-amber-50 text-2xl">
+          <div className="bg-amber-50 text-xl">
             <div>Pressure</div>
             <div>
               {isLoading ? (
@@ -110,7 +110,7 @@ function Info() {
               )}
             </div>
           </div>
-          <div className="bg-amber-50 text-2xl">
+          <div className="bg-amber-50 text-xl">
             <div>Sunset</div>
             <div>
               {isLoading ? (
@@ -120,7 +120,7 @@ function Info() {
               )}
             </div>
           </div>
-          <div className="bg-amber-50 text-2xl">
+          <div className="bg-amber-50 text-xl">
             <div>Sunrise</div>
             <div>
               {isLoading ? (

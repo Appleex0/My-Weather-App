@@ -7,9 +7,9 @@ import type { RootState } from "./store/store";
 function App() {
   const isError = useSelector((state: RootState) => state.weather.isError);
   return (
-    <div className="flex flex-col justify-between items-center bg-amber-300 ">
+    <div className="flex flex-col h-screen justify-between items-center bg-amber-300 ">
       {isError && <IsWrong />}
-      <div className="flex flex-col justify-center items-center h-screen w-full">
+      <div className="container flex justify-center items-center flex-col gap-30 pt-30">
         <Search />
         <Info />
       </div>

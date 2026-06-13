@@ -17,12 +17,12 @@ function Search() {
     }
   }, [dispatch, isError]);
   return (
-    <div className="flex justify-center items-center w-full h-1/7">
-      <div className="w-full text-center">
+    <div className="flex justify-center items-center w-full h-2/9">
+      <div className="w-full flex gap-4 justify-center items-center">
         <input
           type="text"
           placeholder="Şəhər adı girin"
-          className="outline-none border px-2 py-1 w-2/7  rounded-lg"
+          className="outline-none border px-2 py-1 w-4/7  rounded-lg"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setCity(e.target.value)
           }
